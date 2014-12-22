@@ -1,0 +1,8 @@
+﻿@model EditViewModel
+
+@using (Html.BeginForm("EditView","Home"))
+{
+    @Html.TextAreaFor(m => m.Code, new {cols= 100, rows = 25})
+
+    <button>Guardar</button>
+}
