@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using RazorEngine;
 using RazorEngine.Templating;
+using PruebaRazorEngine.Models;
 
 namespace PruebaRazorEngine.Controllers
 {
@@ -24,6 +25,23 @@ namespace PruebaRazorEngine.Controllers
                 templateService.AddNamespace("PruebaRazorEngine.Controllers");
                 Razor.SetTemplateService(templateService);
                 string result = Razor.Parse(InMemoryStorage.editViewModel.Code, new { Name = "World" });
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string DynamicHtml2()
+        {
+            try
+            {
+                var templateService = new TemplateService();
+                //templateService.AddNamespace("PruebaRazorEngine.Controllers");
+                //templateService.AddNamespace("PruebaRazorEngine.Models");
+                Razor.SetTemplateService(templateService);
+                string result = Razor.Parse(System.IO.File.ReadAllText(Server.MapPath("~/Views/Dynamic/MyDynamicView2.cshtml")), new DynamicModel {Alt="Hola mostru",ImageUrl= "https://s-media-cache-ak0.pinimg.com/originals/5d/95/f4/5d95f4bc8a065c4612fba4bb24bd1e72.gif" });
                 return result;
             }
             catch (Exception ex)

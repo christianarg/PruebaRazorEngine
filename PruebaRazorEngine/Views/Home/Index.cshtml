@@ -2,14 +2,23 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Action("DynamicHtml")
-
 <div>
+    <h2>Un ejemplo</h2>
+    @Html.Action("DynamicHtml")
+
+
     @Html.ActionLink("Editar plantilla", "ShowEditForm")
+
+    <div>
+        @Html.ActionLink("Resetear plantilla por defecto", "ShowEditForm")
+    </div>
 </div>
 
 <div>
-    @Html.ActionLink("Resetear plantilla por defecto", "ShowEditForm")
+    <h2>Un otro ejemplo</h2>
+    @Html.Action("DynamicHtml2")
+   
 </div>
+
 
 @*@Html.RenderAction("ShowEditForm")*@
